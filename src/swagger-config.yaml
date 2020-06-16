@@ -18,7 +18,7 @@ components:
             api: "api"
 security:
   - identity_server_auth:
-    - api
+      - api
 paths:
   /test:
     get:
