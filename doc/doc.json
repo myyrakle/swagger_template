@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "version": "0.0.1",
-    "title": "Swagger UI Webpack Setup",
-    "description": "Demonstrates Swagger UI with Webpack including CSS and OAuth"
+    "title": "Swagger Document",
+    "description": "Swagger로 작성된 API 문서입니다."
   },
   "servers": [
     {
@@ -37,11 +37,45 @@
         "summary": "Runs a test request against the Identity Server demo API",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/Response/JustSuccess"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/Response/JustFailed"
+                }
+              }
+            }
           }
+        }
+      }
+    }
+  },
+  "Response": {
+    "JustSuccess": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "JustFailed": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": false
         }
       }
     }
